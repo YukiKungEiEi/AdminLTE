@@ -1,3 +1,9 @@
+<?php
+require '../connect.php';
+if (empty($_SESSION['username'])) {
+  header('location:../login.php');
+}
+?>
 <nav class="app-header navbar navbar-expand bg-body">
         <!--begin::Container-->
         <div class="container-fluid">
@@ -159,7 +165,7 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="./assets/img/lupa.gif"
+                  src="./assets/img/Waguri.gif"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -169,7 +175,7 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="./assets/img/lupa.gif"
+                    src="./assets/img/Waguri.gif"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
