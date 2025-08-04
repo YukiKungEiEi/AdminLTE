@@ -73,7 +73,7 @@
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">ชื่อ-นามสกุล</label>
                     <input type="text" name="fullname" class="form-control" id="exampleInputPassword1"
-                    value="<?php echo $row['password'] ?>" />
+                    value="<?php echo $row['fullname'] ?>" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">เบอร์โทรศัพท์</label>
