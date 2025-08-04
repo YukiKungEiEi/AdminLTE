@@ -9,8 +9,9 @@
         if (empty($username) || empty($password) || empty($fullname) || empty($phone) || empty($email)) {
     echo  "<script>alert('กรุณากรอกข้อมูลให้ครบทุกช่อง');history.back()</script>";
   } else {
-    $old_data = mysqli_fetch_array($con->query("SELECT * FROM users"));
-    if ($username == $old_data['username']) {
+    $old_data = $con->query("SELECT * FROM users WHERE username= '$username' ");
+    $old_num = mysqli_num_rows($old_data);
+    if ($old_num == 1) {
       echo  "<script>alert('username นี้มีคนใช้แล้ว');history.back()</script>";
     } else {
       $sql = "INSERT INTO users VALUES('$username','$password','$fullname','$phone','$email')";
