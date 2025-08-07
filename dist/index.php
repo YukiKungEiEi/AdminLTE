@@ -92,11 +92,23 @@
         case 'edit_user':
           include 'edit_user.php';
           break;
+        case 'product':
+          include 'product.php';
+          break;
         case 'del_user':
           include 'del_user.php';
           break;
         default:
           include 'dashboard.php';
+          break;
+        case 'add_product':
+          include 'add_product.php';
+          break;
+        case 'edit_product':
+          include 'edit_product.php';
+          break;
+        case 'del_product':
+          include 'del_product.php';
           break;
       }
       ?>
