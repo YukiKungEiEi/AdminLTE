@@ -48,6 +48,8 @@ $result = $con->query($sql);
                           <th>pro_price</th>
                           <th>pro_amount</th>
                           <th>Pro_status</th>
+                          <th>Image</th>
+                          <th>Manage</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -62,9 +64,12 @@ $result = $con->query($sql);
                                 <td><?php echo $row ['pro_amount'] ?></td>
                                 <td><?php echo $row ['pro_status'] ?></td>
                                 <td>
-                                  <a href="index.php?page=edit_product&pro_id=<?php echo $row['pro_id']?>" class="btn btn-warning">
+                                  <img src="assets/product_img/<?php echo $row['image'] ?>" alt="" width="100px" height="100px">
+                                </td>
+                                <td>
+                                  <a href="index.php?page=edit_product&pro_name=<?php echo $row['pro_name']?>" class="btn btn-warning">
                                     <i class="bi bi-pencil-square"></i></a>
-                                  <a href="index.php?page=del_product&pro_id=<?php echo $row['pro_id']?>" class="btn btn-danger" onclick="return confirm('⁕ Confirm on Delete Product?')">
+                                  <a href="index.php?page=del_product&pro_name=<?php echo $row['pro_name']?>" class="btn btn-danger" onclick="return confirm('⁕ Confirm on Delete Product?')">
                                     <i class="bi bi-x-circle"></i></a>
                                 </td>
                             </tr>

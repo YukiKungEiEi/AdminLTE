@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
   $pro_price = $_POST['pro_price'];
   $pro_amount = $_POST['pro_amount'];
   $pro_status = $_POST['pro_status'];
-    
+  $filename = $_FILES['image']['name'];
   // ตรวจสอบค่าว่าง
   if (empty($pro_name) || empty($pro_price) || empty($pro_amount) || empty($pro_status)) {
     echo "<script>alert('กรุณากรอกข้อมูลให้ครบถ้วน');history.back();</script>";
@@ -16,12 +16,10 @@ if (isset($_POST['submit'])) {
     $result = $con->query("SELECT pro_id FROM product WHERE pro_id = '$pro_id'");
     $exist_pro_id = mysqli_fetch_array($result);
 
-    if ($exist_pro_id) {
-      echo "<script>alert('รหัสสินค้าซ้ำ กรุณาเปลี่ยนรหัสสินค้า');history.back();</script>";
-    } else {
-      // เพิ่มข้อมูลสินค้าใหม่
-      $sql = "INSERT INTO product (pro_name, pro_price, pro_amount, pro_status)
-              VALUES ('$pro_name', '$pro_price', '$pro_amount', '$pro_status')";
+
+      move_uploaded_file($_FILES['image']['tmp_name'], 'assets/product_img/' . $filename);
+      $sql = "INSERT INTO product (pro_name, pro_price, pro_amount, pro_status, image)
+        VALUES ('$pro_name', '$pro_price', '$pro_amount', '$pro_status', '$filename')";
 
       if ($con->query($sql)) {
         echo "<script>window.location.href='index.php?page=product';</script>";
@@ -30,7 +28,7 @@ if (isset($_POST['submit'])) {
       }
     }
   }
-}
+
 ?>
 
 <!--begin::App Content Header-->
@@ -70,7 +68,7 @@ if (isset($_POST['submit'])) {
           </div>
           <!--end::Header-->
           <!--begin::Form-->
-          <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+          <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
             <!--begin::Body-->
             <div class="card-body">
               <div class="mb-3">
@@ -90,6 +88,10 @@ if (isset($_POST['submit'])) {
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Product Status</label>
                 <input type="text" name="pro_status" class="form-control" id="exampleInputPassword1" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Image</label>
+                <input type="file" name="image" class="form-control" id="exampleInputPassword1" />
               </div>
             </div>
             <!--end::Body-->

@@ -1,7 +1,7 @@
 <?php
-$pro_id = $_GET['pro_id'];
+$pro_name = $_GET['pro_name'];
 require '../connect.php';
-$sql = "DELETE FROM product WHERE pro_id='$pro_id'";
+$sql = "DELETE FROM product WHERE pro_name='$pro_name'";
 $result = $con->query($sql);
 if ($result) {
     echo "<script>alert('Product successfully deleted ✅'); window.location.href='index.php?page=product';</script>";
