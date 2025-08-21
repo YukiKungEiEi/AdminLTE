@@ -10,10 +10,20 @@ $result = $con->query($sql);
   <div class="container-fluid">
     <!--begin::Row-->
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-3">
         <h3 class="mb-0">User list</h3>
       </div>
       <div class="col-sm-6">
+      <form class ="row" action="index.php?page=search_user" method="POST">
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="keyword" placeholder="Search users...">
+          </div>
+          <div class="col-sm-2">
+            <button class="btn btn-primary"><i class="bi bi-search"></i></button>
+        </div>
+      </form>
+      </div>  
+      <div class="col-sm-3">
         <ol class="breadcrumb float-sm-end">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active" aria-current="page">User list</li>
@@ -43,7 +53,7 @@ $result = $con->query($sql);
               <div class="col-md-10">
                 <form action="add_user_csv.php" method="POST" enctype="multipart/form-data">
                   <div class="row mb-3">
-                    <label for="csvFile" class="col-sm-2 col-form-label">เพิ่มทีละหลายคน</label>
+                    <label for="csvFile" class="col-sm-2 col-form-label">add user csv</label>
                     <div class="col-sm-8">
                       <input type="file" class="form-control" name="csv_file" id="csvFile" accept=".csv,.xlsx,.xls">
                     </div>
@@ -56,7 +66,7 @@ $result = $con->query($sql);
 
               <div class="col-md-2">
                 <a href="index.php?page=add_user" class="btn btn-success mb-4">
-                  <i class="bi bi-person-add">เพิ่มทีละคน</i> 
+                  <i class="bi bi-person-add">add user</i> 
                 </a>
               </div>
 
@@ -65,6 +75,7 @@ $result = $con->query($sql);
                   <tr>
                     <th>#</th>
                     <th>Username</th>
+                    <th>Password</th>
                     <th>Fullname</th>
                     <th>Phone</th>
                     <th>Email</th>
@@ -80,6 +91,7 @@ $result = $con->query($sql);
                     <tr class="align-middle">
                       <td><?php echo $i ?></td>
                       <td><?php echo $row['username'] ?></td>
+                      <td><?php echo $row['password'] ?></td>
                       <td><?php echo $row['fullname'] ?></td>
                       <td><?php echo $row['phone'] ?></td>
                       <td><?php echo $row['email'] ?></td>

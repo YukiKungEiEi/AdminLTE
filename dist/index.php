@@ -98,9 +98,6 @@
         case 'del_user':
           include 'del_user.php';
           break;
-        default:
-          include 'dashboard.php';
-          break;
         case 'add_product':
           include 'add_product.php';
           break;
@@ -110,6 +107,13 @@
         case 'del_product':
           include 'del_product.php';
           break;
+        case 'search_user':
+          include 'search_user.php';
+          break;
+        case 'search_product':
+          include 'search_product.php';
+          break;
+        default:
       }
       ?>
     </main>
